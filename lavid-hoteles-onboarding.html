@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding — Lavid Hoteles × Dataverse Solutions</title>
+
+  <!--
+  ══════════════════════════════════════════════════════════════════
+  CONFIGURACIÓN FORMSPREE — LEER ANTES DE PUBLICAR
+  ══════════════════════════════════════════════════════════════════
+  1. Ve a https://formspree.io y crea una cuenta con
+     solutions@dataversesolutions.net
+  2. Crea un nuevo formulario (New Form) — anota el ID que te dan
+     (tiene el formato: xyzabcde)
+  3. Reemplaza el valor de FORMSPREE_ID abajo con tu ID real
+  4. Sube este archivo a GitHub Pages (o cualquier host estático)
+  5. Las respuestas llegarán directamente a solutions@dataversesolutions.net
+  ══════════════════════════════════════════════════════════════════
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #1a2744;
+      --navy-mid:   #243358;
+      --navy-light: #2f4270;
+      --gold:       #9A7C3F;
+      --gold-light: #C9A84C;
+      --gold-faint: rgba(154,124,63,.08);
+      --gold-border: rgba(154,124,63,.25);
+      --cream:      #F8F5EE;
+      --cream-dark: #F0EBE0;
+      --white:      #FFFFFF;
+      --text:       #1C1C1C;
+      --muted:      #6B6460;
+      --light:      #A09890;
+      --border:     #E2DDD6;
+      --border-mid: #CFC9C0;
+      --danger:     #C94040;
+      --success:    #2E7D52;
+      --radius:     8px;
+      --radius-lg:  14px;
+      --radius-xl:  20px;
+      --shadow:     0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+      --shadow-md:  0 2px 8px rgba(0,0,0,.08), 0 8px 32px rgba(0,0,0,.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── Layout ─── */
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* ─── Header ─── */
+    .site-header {
+      background: var(--navy);
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+
+    .logo-name {
+      font-size: 10px;
+      color: rgba(201,168,76,.6);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 52px;
+      background: rgba(255,255,255,.12);
+      flex-shrink: 0;
+    }
+
+    .header-text { flex: 1; }
+
+    .header-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+      opacity: .8;
+    }
+
+    .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .header-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      line-height: 1.5;
+    }
+
+    /* ─── Gold rule ─── */
+    .gold-rule {
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+      margin-bottom: 0;
+    }
+
+    /* ─── Progress ─── */
+    .progress-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .progress-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 4px;
+      background: var(--cream-dark);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%);
+      border-radius: 99px;
+      transition: width .4s ease;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .section-tabs {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px 12px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      background: var(--white);
+    }
+
+    .s-tab {
+      padding: 5px 13px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--light);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+    .s-tab:hover { border-color: var(--border-mid); color: var(--muted); }
+    .s-tab.active { background: var(--navy); color: var(--gold-light); border-color: var(--navy); }
+    .s-tab.visited { border-color: var(--gold-border); color: var(--gold); }
+
+    /* ─── Sections ─── */
+    .form-section { display: none; padding-top: 32px; }
+    .form-section.active { display: block; }
+
+    .section-head { margin-bottom: 24px; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Cards ─── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Grid ─── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .grid-1 { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 14px; }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Fields ─── */
+    .field { display: flex; flex-direction: column; gap: 5px; }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    label .req { color: var(--gold); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="url"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      outline: none;
+      transition: border-color .18s, box-shadow .18s;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(154,124,63,.1);
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 88px;
+      line-height: 1.55;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 5l4 4 4-4' stroke='%23A09890' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 32px;
+      cursor: pointer;
+    }
+
+    /* ─── Radio pills ─── */
+    .pill-group { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--muted);
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      transition: all .18s;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .pill:hover { border-color: var(--border-mid); color: var(--text); }
+
+    .pill.active {
+      background: var(--navy);
+      color: var(--gold-light);
+      border-color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ─── Checkboxes ─── */
+    .check-group { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: all .15s;
+    }
+
+    .check-item:hover { background: var(--cream); border-color: var(--border); }
+
+    .check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--navy);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+      background: none;
+    }
+
+    /* ─── Info boxes ─── */
+    .info-box {
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .info-box strong { color: var(--gold); }
+
+    .warn-box {
+      background: rgba(201,64,64,.05);
+      border: 1px solid rgba(201,64,64,.2);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .warn-box strong { color: var(--danger); }
+
+    /* ─── Priority scale ─── */
+    .priority-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 10px;
+    }
+
+    .p-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .p-body { flex: 1; }
+
+    .p-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .p-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .scale-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scale-row input[type="range"] {
+      flex: 1;
+      height: 4px;
+      padding: 0;
+      border: none;
+      background: var(--border);
+      border-radius: 99px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .scale-val {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gold);
+      min-width: 16px;
+      text-align: center;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--light);
+      margin-top: 2px;
+    }
+
+    /* ─── Hotel cards ─── */
+    .hotel-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 14px;
+      background: var(--white);
+      position: relative;
+    }
+
+    .hotel-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .hotel-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hotel-number {
+      width: 30px;
+      height: 30px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold-light);
+    }
+
+    .hotel-tag {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .btn-remove {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--light);
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: all .15s;
+    }
+
+    .btn-remove:hover {
+      border-color: rgba(201,64,64,.3);
+      color: var(--danger);
+      background: rgba(201,64,64,.04);
+    }
+
+    .btn-add-hotel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border: 1.5px dashed var(--gold-border);
+      border-radius: var(--radius-lg);
+      background: var(--gold-faint);
+      color: var(--gold);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all .18s;
+      margin-bottom: 20px;
+    }
+
+    .btn-add-hotel:hover {
+      border-color: var(--gold);
+      background: rgba(154,124,63,.12);
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    /* ─── Navigation buttons ─── */
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-back {
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--muted);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .btn-back:hover { background: var(--cream); border-color: var(--border-mid); }
+
+    .btn-next {
+      padding: 11px 28px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--navy);
+      color: var(--gold-light);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all .18s;
+      letter-spacing: .3px;
+    }
+
+    .btn-next:hover { background: var(--navy-mid); }
+
+    .btn-submit {
+      padding: 12px 36px;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all .18s;
+      letter-spacing: .3px;
+      box-shadow: 0 2px 12px rgba(154,124,63,.35);
+    }
+
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 4px 18px rgba(154,124,63,.4); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ─── Spinner ─── */
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .6s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ─── Success screen ─── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .success-screen.show { display: block; }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(46,125,82,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+    }
+
+    .success-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--success);
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .success-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .success-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 440px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--gold);
+    }
+
+    /* ─── Error ─── */
+    .error-msg {
+      display: none;
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: rgba(201,64,64,.06);
+      border: 1px solid rgba(201,64,64,.2);
+      border-radius: var(--radius);
+    }
+
+    /* ─── Footer ─── */
+    .page-footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--light);
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      line-height: 1.7;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 480px) {
+      .header-inner { flex-direction: column; text-align: center; }
+      .header-divider { display: none; }
+      .header-title { font-size: 22px; }
+      .section-title { font-size: 24px; }
+      .card { padding: 16px; }
+      .hotel-card { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ Header ══ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo-block">
+      <div class="logo-mark">DS</div>
+      <span class="logo-name">Dataverse</span>
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-text">
+      <div class="header-eyebrow">Formulario de inicio de proyecto</div>
+      <h1 class="header-title">Lavid Hoteles × Dataverse Solutions</h1>
+      <p class="header-sub">Completa cada sección con detalle — es la base de tu propuesta comercial personalizada.</p>
+    </div>
+  </div>
+</header>
+<div class="gold-rule"></div>
+
+<!-- ══ Progress (sticky) ══ -->
+<div class="progress-wrap">
+  <div class="progress-inner">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:12.5%"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">1 de 8</div>
+  </div>
+  <div class="section-tabs" id="sectionTabs"></div>
+</div>
+
+<!-- ══ Main form ══ -->
+<div class="page-wrap">
+
+  <!-- SECTION 1: Empresa -->
+  <section class="form-section active" id="sec-0" data-title="Empresa">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 1 de 8</div>
+      <h2 class="section-title">Datos de la empresa</h2>
+      <p class="section-desc">Información legal y de contacto principal del negocio hotelero.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Información legal</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Razón social / Nombre legal <span class="req">*</span></label>
+          <input type="text" name="razon_social" placeholder="Ej: Lavid Hoteles S.A.S." required />
+        </div>
+        <div class="field">
+          <label>NIT / Cédula / Documento tributario</label>
+          <input type="text" name="nit" placeholder="Ej: 900.123.456-7" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>País de constitución</label>
+          <input type="text" name="pais" value="Colombia" />
+        </div>
+        <div class="field">
+          <label>Ciudad principal de operación</label>
+          <input type="text" name="ciudad_principal" placeholder="Ej: Bogotá" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Dirección fiscal</label>
+          <input type="text" name="direccion_fiscal" placeholder="Ej: Cra 80 #38-41, Kennedy, Bogotá" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Contacto principal del proyecto</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Nombre completo <span class="req">*</span></label>
+          <input type="text" name="contacto_nombre" placeholder="Ej: Nelsy Ruiz" required />
+        </div>
+        <div class="field">
+          <label>Cargo / Rol</label>
+          <input type="text" name="contacto_cargo" placeholder="Ej: Propietaria / Gerente General" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>WhatsApp / Teléfono <span class="req">*</span></label>
+          <input type="tel" name="contacto_whatsapp" placeholder="+57 300 000 0000" required />
+        </div>
+        <div class="field">
+          <label>Correo electrónico <span class="req">*</span></label>
+          <input type="email" name="contacto_email" placeholder="correo@dominio.com" required />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Contacto secundario — Socia / Representante adicional</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Nombre completo</label>
+          <input type="text" name="c2_nombre" placeholder="Ej: Laura Alejandra" />
+        </div>
+        <div class="field">
+          <label>Cargo / Rol</label>
+          <input type="text" name="c2_cargo" placeholder="Ej: Socia — representante USA" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>WhatsApp / Teléfono</label>
+          <input type="tel" name="c2_telefono" placeholder="+1 (305) 000-0000" />
+        </div>
+        <div class="field">
+          <label>Correo electrónico</label>
+          <input type="email" name="c2_email" placeholder="correo@dominio.com" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>País de residencia del contacto secundario</label>
+          <div class="pill-group" id="pg_c2_pais">
+            <span class="pill active" data-group="c2_pais" data-val="Colombia">Colombia</span>
+            <span class="pill" data-group="c2_pais" data-val="Estados Unidos">Estados Unidos</span>
+            <span class="pill" data-group="c2_pais" data-val="Otro">Otro</span>
+          </div>
+          <input type="hidden" name="c2_pais" value="Colombia" />
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <div></div>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 2: Propiedades -->
+  <section class="form-section" id="sec-1" data-title="Propiedades">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 2 de 8</div>
+      <h2 class="section-title">Portafolio de propiedades</h2>
+      <p class="section-desc">Agrega cada hotel o propiedad por separado. Cuantos más detalles incluyas, más precisa será la solución que diseñamos para ti.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>¿Hay socios por propiedad?</strong> Indica quién es responsable de cada hotel — esto define los permisos y el flujo del agente de IA por propiedad.
+    </div>
+
+    <div id="hotelList"></div>
+    <input type="hidden" name="hoteles_json" id="hotelesJson" />
+
+    <button class="btn-add-hotel" onclick="addHotel()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      Agregar propiedad
+    </button>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Sistemas -->
+  <section class="form-section" id="sec-2" data-title="Sistemas">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 3 de 8</div>
+      <h2 class="section-title">Sistemas y tecnología actual</h2>
+      <p class="section-desc">Necesitamos entender con qué herramientas operan hoy para diseñar las integraciones correctas.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">PMS — Sistema de gestión hotelera (Property Management System)</div>
+      <div class="info-box">
+        <strong>¿Qué es el PMS?</strong> Es el sistema donde gestionas reservas, habitaciones y disponibilidad. Ej: Little Hotelier, MyTools, Opera, Cloudbeds, Mews, etc.
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>PMS Bogotá / Kennedy <span class="req">*</span></label>
+          <input type="text" name="pms_bogota" placeholder="Ej: MyTools (Juan Carlos Vega)" />
+        </div>
+        <div class="field">
+          <label>PMS Medellín</label>
+          <input type="text" name="pms_medellin" placeholder="Ej: Little Hotelier" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>URL / Panel de administración (Bogotá)</label>
+          <input type="url" name="pms_bogota_url" placeholder="https://..." />
+        </div>
+        <div class="field">
+          <label>URL / Panel de administración (Medellín)</label>
+          <input type="url" name="pms_medellin_url" placeholder="https://..." />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Usuario / Login del PMS (si puedes compartirlo)</label>
+          <input type="text" name="pms_usuario" placeholder="usuario@email.com" />
+        </div>
+        <div class="field">
+          <label>¿Tienen API o webhook disponible?</label>
+          <div class="pill-group" id="pg_api_disp">
+            <span class="pill" data-group="api_disp" data-val="Sí en ambos">Sí en ambos</span>
+            <span class="pill" data-group="api_disp" data-val="Solo Medellín">Solo Medellín</span>
+            <span class="pill" data-group="api_disp" data-val="Solo Bogotá">Solo Bogotá</span>
+            <span class="pill active" data-group="api_disp" data-val="No sé / A verificar">No sé / A verificar</span>
+          </div>
+          <input type="hidden" name="api_disp" value="No sé / A verificar" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Quién tiene acceso de administrador al PMS? ¿Quién puede darnos acceso técnico?</label>
+          <textarea name="pms_acceso" placeholder="Ej: Nelsy tiene credenciales de MyTools. Para Little Hotelier, contactar al administrador en Medellín."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">OTAs — Canales de venta online activos</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Cuáles OTAs usan actualmente? (selecciona todas las que aplican)</label>
+          <div class="check-group">
+            <label class="check-item"><input type="checkbox" name="ota_booking" value="Booking.com" checked /> Booking.com</label>
+            <label class="check-item"><input type="checkbox" name="ota_airbnb" value="Airbnb" checked /> Airbnb</label>
+            <label class="check-item"><input type="checkbox" name="ota_expedia" value="Expedia" /> Expedia</label>
+            <label class="check-item"><input type="checkbox" name="ota_hotels" value="Hotels.com" /> Hotels.com</label>
+            <label class="check-item"><input type="checkbox" name="ota_despegar" value="Despegar / Decolar" /> Despegar / Decolar</label>
+            <label class="check-item"><input type="checkbox" name="ota_google" value="Google Hotel Ads" /> Google Hotel Ads</label>
+            <label class="check-item"><input type="checkbox" name="ota_hostelworld" value="Hostelworld" /> Hostelworld</label>
+            <label class="check-item"><input type="checkbox" name="ota_otra" value="Otra" /> Otra — indica cuál:</label>
+          </div>
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Si marcaste "Otra", ¿cuál OTA?</label>
+          <input type="text" name="ota_otra_cual" placeholder="Nombre de la plataforma" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Tienen motor de reservas directo (propio)?</label>
+          <div class="pill-group" id="pg_motor_propio">
+            <span class="pill" data-group="motor_propio" data-val="Sí, lo tenemos">Sí, lo tenemos</span>
+            <span class="pill active" data-group="motor_propio" data-val="No">No</span>
+            <span class="pill" data-group="motor_propio" data-val="En proceso">En proceso</span>
+          </div>
+          <input type="hidden" name="motor_propio" value="No" />
+        </div>
+        <div class="field">
+          <label>Comisión promedio que pagan a OTAs (%)</label>
+          <input type="number" name="comision_ota" placeholder="Ej: 18" min="0" max="100" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Están sincronizadas las OTAs con el PMS, o se actualiza la disponibilidad manualmente?</label>
+          <textarea name="sync_otas" placeholder="Ej: Booking está sincronizado con Little Hotelier en Medellín. En Bogotá se actualiza manualmente vía WhatsApp al front desk."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Herramientas adicionales</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Usan algún CRM o base de datos de clientes?</label>
+          <input type="text" name="crm" placeholder="Ej: ninguno, Excel, HubSpot, Salesforce..." />
+        </div>
+        <div class="field">
+          <label>¿Herramienta de facturación / contabilidad?</label>
+          <input type="text" name="contabilidad" placeholder="Ej: Siigo, Alegra, Excel..." />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay algún sistema o plataforma que NO queremos tocar ni reemplazar?</label>
+          <textarea name="sistemas_intocables" placeholder="Ej: MyTools no puede cambiarse porque el proveedor tiene acceso a datos históricos de años."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Canales digitales -->
+  <section class="form-section" id="sec-3" data-title="Canales digitales">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 4 de 8</div>
+      <h2 class="section-title">Canales digitales y presencia online</h2>
+      <p class="section-desc">Perfiles, redes sociales y números de contacto actuales del negocio.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">WhatsApp de atención al cliente</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Número principal WhatsApp — Bogotá <span class="req">*</span></label>
+          <input type="tel" name="wa_bogota" placeholder="+57 300 000 0000" />
+        </div>
+        <div class="field">
+          <label>Número WhatsApp — Medellín</label>
+          <input type="tel" name="wa_medellin" placeholder="+57 310 000 0000" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Usan WhatsApp Business o número personal?</label>
+          <div class="pill-group" id="pg_wa_tipo">
+            <span class="pill" data-group="wa_tipo" data-val="WhatsApp Business">WhatsApp Business</span>
+            <span class="pill active" data-group="wa_tipo" data-val="Número personal">Número personal</span>
+            <span class="pill" data-group="wa_tipo" data-val="Ambos">Ambos</span>
+          </div>
+          <input type="hidden" name="wa_tipo" value="Número personal" />
+        </div>
+        <div class="field">
+          <label>Mensajes de WhatsApp recibidos por día (aprox.)</label>
+          <div class="pill-group" id="pg_wa_vol">
+            <span class="pill" data-group="wa_vol" data-val="1–10">1–10</span>
+            <span class="pill active" data-group="wa_vol" data-val="11–30">11–30</span>
+            <span class="pill" data-group="wa_vol" data-val="31–60">31–60</span>
+            <span class="pill" data-group="wa_vol" data-val="+60">+60</span>
+          </div>
+          <input type="hidden" name="wa_vol" value="11–30" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>% de conversación que termina en reserva (aprox.)</label>
+          <input type="number" name="wa_conversion" placeholder="Ej: 30" min="0" max="100" />
+        </div>
+        <div class="field">
+          <label>Horario en que más reciben mensajes</label>
+          <input type="text" name="wa_horario_pico" placeholder="Ej: 9am–2pm y 7pm–11pm" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Redes sociales</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Instagram — Kennedy / Bogotá</label>
+          <input type="text" name="ig_bogota" placeholder="@usuario o URL completa" />
+        </div>
+        <div class="field">
+          <label>Instagram — Medellín (Eco 44 / Love 32)</label>
+          <input type="text" name="ig_medellin" placeholder="@usuario o URL completa" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>TikTok (si tienen perfil activo)</label>
+          <input type="text" name="tiktok" placeholder="@usuario o URL" />
+        </div>
+        <div class="field">
+          <label>Facebook</label>
+          <input type="text" name="facebook" placeholder="@página o URL" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Sitio web propio</label>
+          <input type="url" name="web" placeholder="https://lavidhotel.com" />
+        </div>
+        <div class="field">
+          <label>Google Business (enlace del perfil)</label>
+          <input type="url" name="google_biz" placeholder="https://maps.google.com/..." />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Quién gestiona las redes sociales actualmente?</label>
+          <div class="pill-group" id="pg_rrss_mgr">
+            <span class="pill active" data-group="rrss_mgr" data-val="El propietario">El propietario</span>
+            <span class="pill" data-group="rrss_mgr" data-val="Un empleado">Un empleado</span>
+            <span class="pill" data-group="rrss_mgr" data-val="Agencia externa">Agencia externa</span>
+            <span class="pill" data-group="rrss_mgr" data-val="Nadie por ahora">Nadie por ahora</span>
+          </div>
+          <input type="hidden" name="rrss_mgr" value="El propietario" />
+        </div>
+        <div class="field">
+          <label>Frecuencia de publicación actual</label>
+          <div class="pill-group" id="pg_pub_freq">
+            <span class="pill" data-group="pub_freq" data-val="Diario">Diario</span>
+            <span class="pill" data-group="pub_freq" data-val="3–4x semana">3–4x semana</span>
+            <span class="pill active" data-group="pub_freq" data-val="1–2x semana">1–2x semana</span>
+            <span class="pill" data-group="pub_freq" data-val="Esporádico">Esporádico</span>
+            <span class="pill" data-group="pub_freq" data-val="No publican">No publican</span>
+          </div>
+          <input type="hidden" name="pub_freq" value="1–2x semana" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Base de datos de huéspedes / Email marketing</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Tienen base de datos de huéspedes?</label>
+          <div class="pill-group" id="pg_email_db">
+            <span class="pill" data-group="email_db" data-val="Sí, organizada">Sí, organizada</span>
+            <span class="pill" data-group="email_db" data-val="Sí, desordenada">Sí, desordenada</span>
+            <span class="pill active" data-group="email_db" data-val="No tenemos">No tenemos</span>
+          </div>
+          <input type="hidden" name="email_db" value="No tenemos" />
+        </div>
+        <div class="field">
+          <label>Tamaño aproximado de la base (contactos)</label>
+          <input type="number" name="email_db_size" placeholder="Ej: 500" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hacen email marketing o newsletters actualmente?</label>
+          <div class="pill-group" id="pg_email_mkt">
+            <span class="pill" data-group="email_mkt" data-val="Sí, regularmente">Sí, regularmente</span>
+            <span class="pill" data-group="email_mkt" data-val="Esporádicamente">Esporádicamente</span>
+            <span class="pill active" data-group="email_mkt" data-val="No">No</span>
+            <span class="pill" data-group="email_mkt" data-val="Queremos empezar">Queremos empezar</span>
+          </div>
+          <input type="hidden" name="email_mkt" value="No" />
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Operaciones -->
+  <section class="form-section" id="sec-4" data-title="Operaciones">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 5 de 8</div>
+      <h2 class="section-title">Operaciones actuales</h2>
+      <p class="section-desc">Cuéntanos cómo funciona el día a día hoy — sin filtros. Queremos entender los puntos de dolor reales para resolverlos.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Flujo de reservas actual</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Describe paso a paso cómo se procesa una reserva hoy <span class="req">*</span></label>
+          <textarea name="flujo_reservas" style="min-height:120px" placeholder="Ej: 1) cliente escribe por WhatsApp, 2) Nelsy responde y consulta disponibilidad en MyTools, 3) cliente hace transferencia, 4) Nelsy confirma y avisa al front desk por chat..."></textarea>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Tiempo promedio de respuesta a una consulta</label>
+          <div class="pill-group" id="pg_resp_time">
+            <span class="pill active" data-group="resp_time" data-val="Menos de 1 hora">Menos de 1h</span>
+            <span class="pill" data-group="resp_time" data-val="1–3 horas">1–3h</span>
+            <span class="pill" data-group="resp_time" data-val="3–6 horas">3–6h</span>
+            <span class="pill" data-group="resp_time" data-val="Más de 6 horas">+6h</span>
+          </div>
+          <input type="hidden" name="resp_time" value="Menos de 1 hora" />
+        </div>
+        <div class="field">
+          <label>¿Se atienden consultas fuera del horario laboral?</label>
+          <div class="pill-group" id="pg_fuera_horario">
+            <span class="pill active" data-group="fuera_horario" data-val="Sí, siempre">Sí, siempre</span>
+            <span class="pill" data-group="fuera_horario" data-val="A veces">A veces</span>
+            <span class="pill" data-group="fuera_horario" data-val="No">No</span>
+          </div>
+          <input type="hidden" name="fuera_horario" value="Sí, siempre" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Han tenido problemas de overbooking (doble reserva)?</label>
+          <div class="pill-group" id="pg_overbook">
+            <span class="pill" data-group="overbook" data-val="Sí, frecuentemente">Sí, frecuente</span>
+            <span class="pill active" data-group="overbook" data-val="Alguna vez">Alguna vez</span>
+            <span class="pill" data-group="overbook" data-val="Nunca">Nunca</span>
+          </div>
+          <input type="hidden" name="overbook" value="Alguna vez" />
+        </div>
+        <div class="field">
+          <label>Temporada alta (meses del año)</label>
+          <input type="text" name="temporada_alta" placeholder="Ej: diciembre, enero, semana santa, junio–agosto" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Equipo y atención al cliente</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>N.º de personas que atienden clientes por WhatsApp</label>
+          <input type="number" name="equipo_wa" placeholder="Ej: 1" min="1" />
+        </div>
+        <div class="field">
+          <label>Horario de atención actual</label>
+          <input type="text" name="horario_atencion" placeholder="Ej: Lun–Dom 8am–10pm" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Quién autoriza descuentos, upgrades o resolución de quejas?</label>
+          <input type="text" name="quien_autoriza" placeholder="Ej: solo Nelsy puede autorizar cambios de tarifa o upgrades" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay guiones o respuestas frecuentes que ya usan en WhatsApp?</label>
+          <textarea name="scripts_wa" placeholder="Ej: 'Hola, gracias por contactarnos. El check-in es a las 3pm...' — pega el texto aquí si lo tienes, o indica si no hay nada definido aún."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Gestión de reseñas y reputación</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Responden las reseñas en Booking / Google / Airbnb?</label>
+          <div class="pill-group" id="pg_resp_reviews">
+            <span class="pill" data-group="resp_reviews" data-val="Sí, siempre">Sí, siempre</span>
+            <span class="pill active" data-group="resp_reviews" data-val="A veces">A veces</span>
+            <span class="pill" data-group="resp_reviews" data-val="Casi nunca">Casi nunca</span>
+            <span class="pill" data-group="resp_reviews" data-val="Nunca">Nunca</span>
+          </div>
+          <input type="hidden" name="resp_reviews" value="A veces" />
+        </div>
+        <div class="field">
+          <label>¿Piden a los huéspedes que dejen reseña post-checkout?</label>
+          <div class="pill-group" id="pg_ask_review">
+            <span class="pill" data-group="ask_review" data-val="Sí, sistemáticamente">Sí, siempre</span>
+            <span class="pill active" data-group="ask_review" data-val="Informalmente">Informalmente</span>
+            <span class="pill" data-group="ask_review" data-val="No lo hacemos">No lo hacemos</span>
+          </div>
+          <input type="hidden" name="ask_review" value="Informalmente" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="warn-box">
+          <strong>Reputación en redes sociales:</strong> Si hay contenido no autorizado o problemático circulando en redes sobre alguna propiedad, descríbelo aquí — esto es confidencial y nos ayuda a diseñar el protocolo de contención.
+        </div>
+        <div class="field">
+          <label>¿Tienen algún problema específico de reputación digital que debamos conocer?</label>
+          <textarea name="reputacion_problemas" placeholder="Ej: hay videos circulando en redes con contenido no autorizado. Kennedy tiene calificación 7.6 en Booking influenciada por el perfil de ciertos huéspedes."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 6: Objetivos -->
+  <section class="form-section" id="sec-5" data-title="Objetivos">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 6 de 8</div>
+      <h2 class="section-title">Objetivos y prioridades</h2>
+      <p class="section-desc">Esto guiará directamente qué construiremos primero. Usa la escala para indicar la importancia de cada objetivo.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Califica cada objetivo del 1 (baja prioridad) al 5 (crítico)</div>
+      <div id="prioritiesBlock">
+        <div class="priority-card">
+          <div class="p-num">1</div>
+          <div class="p-body">
+            <div class="p-label">Aumentar ventas y reservas directas</div>
+            <div class="p-sub">Reducir dependencia de OTAs, mejorar conversión desde WhatsApp y web</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="5" step="1" name="prior_ventas" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">5</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="p-num">2</div>
+          <div class="p-body">
+            <div class="p-label">Automatizar atención WhatsApp 24/7</div>
+            <div class="p-sub">Liberar tiempo operativo y dejar de ser el cuello de botella de la atención</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="5" step="1" name="prior_wa" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">5</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="p-num">3</div>
+          <div class="p-body">
+            <div class="p-label">Mejorar calificaciones en plataformas (Booking, Google, Airbnb)</div>
+            <div class="p-sub">Subir rating, gestionar reseñas negativas, solicitar reseñas post-checkout</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="4" step="1" name="prior_rating" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">4</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="p-num">4</div>
+          <div class="p-body">
+            <div class="p-label">Monitoreo y gestión de reputación en redes sociales</div>
+            <div class="p-sub">Detectar y responder contenido no autorizado en IG, TikTok, YouTube, X</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="4" step="1" name="prior_reputacion" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">4</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="p-num">5</div>
+          <div class="p-body">
+            <div class="p-label">Creación de contenido para redes sociales (TikTok, Instagram)</div>
+            <div class="p-sub">Calendario editorial automatizado, copies y publicaciones por hotel</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="3" step="1" name="prior_contenido" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">3</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+        <div class="priority-card">
+          <div class="p-num">6</div>
+          <div class="p-body">
+            <div class="p-label">Canal de venta de productos físicos (guantes)</div>
+            <div class="p-sub">Landing page / tienda para Colombia y/o canal TikTok Shop en USA</div>
+            <div class="scale-row">
+              <input type="range" min="1" max="5" value="3" step="1" name="prior_productos" oninput="this.nextElementSibling.textContent=this.value" />
+              <span class="scale-val">3</span>
+            </div>
+            <div class="scale-labels"><span>Baja</span><span>Crítico</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Metas numéricas (si las tienes)</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>% de reservas directas que quieres alcanzar</label>
+          <input type="number" name="meta_reservas_directas" placeholder="Ej: 40" min="0" max="100" />
+        </div>
+        <div class="field">
+          <label>Calificación objetivo en Booking (escala 1–10)</label>
+          <input type="number" name="meta_rating_booking" step="0.1" placeholder="Ej: 8.5" min="1" max="10" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Ocupación promedio actual (%)</label>
+          <input type="number" name="ocupacion_actual" placeholder="Ej: 65" min="0" max="100" />
+        </div>
+        <div class="field">
+          <label>Ocupación objetivo a alcanzar (%)</label>
+          <input type="number" name="ocupacion_objetivo" placeholder="Ej: 85" min="0" max="100" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Tono y voz de marca por propiedad</div>
+      <div class="info-box">
+        El agente de IA hablará por tu hotel. Su tono debe ser auténtico y diferente según la ciudad y el tipo de huésped.
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Tono para Kennedy (Bogotá)</label>
+          <div class="pill-group" id="pg_tono_kennedy">
+            <span class="pill active" data-group="tono_kennedy" data-val="Formal y profesional">Formal</span>
+            <span class="pill" data-group="tono_kennedy" data-val="Amigable y cercano">Amigable</span>
+            <span class="pill" data-group="tono_kennedy" data-val="Neutro">Neutro</span>
+            <span class="pill" data-group="tono_kennedy" data-val="Otro">Otro</span>
+          </div>
+          <input type="hidden" name="tono_kennedy" value="Formal y profesional" />
+        </div>
+        <div class="field">
+          <label>Tono para hoteles en Medellín</label>
+          <div class="pill-group" id="pg_tono_medellin">
+            <span class="pill active" data-group="tono_medellin" data-val="Paisa / Cercano">Paisa / Cercano</span>
+            <span class="pill" data-group="tono_medellin" data-val="Formal">Formal</span>
+            <span class="pill" data-group="tono_medellin" data-val="Mixto">Mixto</span>
+          </div>
+          <input type="hidden" name="tono_medellin" value="Paisa / Cercano" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Palabras, frases o temas que el agente NUNCA debe mencionar</label>
+          <textarea name="prohibidos_agente" placeholder="Ej: no hablar de tarifas de competidores, no mencionar 'motel' para el hotel Carvajal, nunca confirmar disponibilidad sin verificar en el PMS..."></textarea>
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Qué hace diferente a tu hotel de la competencia? (en tus propias palabras)</label>
+          <textarea name="diferenciadores" placeholder="Ej: ubicación estratégica en Kennedy, limpieza, atención personalizada, precio, ambiente tranquilo, acceso a centros comerciales cercanos..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 7: Productos adicionales -->
+  <section class="form-section" id="sec-6" data-title="Productos extra">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 7 de 8</div>
+      <h2 class="section-title">Productos y servicios adicionales</h2>
+      <p class="section-desc">Además de los hoteles, sabemos que hay interés en vender productos físicos tanto en Colombia como en USA.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Venta de guantes — Colombia</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Quieren incluir canal de venta de guantes en Colombia?</label>
+          <div class="pill-group" id="pg_guantes_col">
+            <span class="pill active" data-group="guantes_col" data-val="Sí — Fase 1">Sí — Fase 1</span>
+            <span class="pill" data-group="guantes_col" data-val="Sí — Fase 2">Sí — Fase 2</span>
+            <span class="pill" data-group="guantes_col" data-val="No por ahora">No por ahora</span>
+          </div>
+          <input type="hidden" name="guantes_col" value="Sí — Fase 1" />
+        </div>
+        <div class="field">
+          <label>¿Cuándo llega el producto a Colombia?</label>
+          <input type="text" name="guantes_llegada" placeholder="Ej: ~6 semanas desde hoy" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Precio de venta al público en Colombia</label>
+          <input type="text" name="guantes_precio_col" placeholder="Ej: COP $45.000 / par" />
+        </div>
+        <div class="field">
+          <label>Formato deseado para Colombia</label>
+          <div class="pill-group" id="pg_formato_col">
+            <span class="pill active" data-group="formato_col" data-val="Landing page">Landing page</span>
+            <span class="pill" data-group="formato_col" data-val="Tienda online">Tienda online</span>
+            <span class="pill" data-group="formato_col" data-val="Catálogo + WhatsApp">Catálogo + WhatsApp</span>
+          </div>
+          <input type="hidden" name="formato_col" value="Landing page" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Tienen fotos del producto disponibles?</label>
+          <div class="pill-group" id="pg_fotos_guantes">
+            <span class="pill" data-group="fotos_guantes" data-val="Sí, listas">Sí, listas</span>
+            <span class="pill active" data-group="fotos_guantes" data-val="En proceso">En proceso</span>
+            <span class="pill" data-group="fotos_guantes" data-val="No todavía">No todavía</span>
+          </div>
+          <input type="hidden" name="fotos_guantes" value="En proceso" />
+        </div>
+        <div class="field">
+          <label>¿Hay stock disponible hoy para venta inmediata?</label>
+          <div class="pill-group" id="pg_stock_col">
+            <span class="pill" data-group="stock_col" data-val="Sí">Sí</span>
+            <span class="pill active" data-group="stock_col" data-val="No, llega en 6 semanas">No, llega pronto</span>
+            <span class="pill" data-group="stock_col" data-val="Parcialmente">Parcialmente</span>
+          </div>
+          <input type="hidden" name="stock_col" value="No, llega en 6 semanas" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Descripción del producto (para el agente de ventas y copy)</label>
+          <textarea name="guantes_descripcion" placeholder="Ej: guantes de trabajo premium, material X, tallas disponibles, usos, diferenciadores frente a la competencia..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Canal de ventas en USA — TikTok Shop / Shopify</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Quieren activar canal de ventas en USA?</label>
+          <div class="pill-group" id="pg_usa_sales">
+            <span class="pill" data-group="usa_sales" data-val="Sí — cuanto antes">Sí — urgente</span>
+            <span class="pill active" data-group="usa_sales" data-val="Sí — Fase 2">Sí — Fase 2</span>
+            <span class="pill" data-group="usa_sales" data-val="Explorando opciones">Explorando</span>
+            <span class="pill" data-group="usa_sales" data-val="No por ahora">No por ahora</span>
+          </div>
+          <input type="hidden" name="usa_sales" value="Sí — Fase 2" />
+        </div>
+        <div class="field">
+          <label>Responsable logístico en USA</label>
+          <input type="text" name="usa_responsable" placeholder="Ej: Laura Alejandra" />
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="field">
+          <label>¿Tienen entidad legal en USA?</label>
+          <div class="pill-group" id="pg_usa_legal">
+            <span class="pill" data-group="usa_legal" data-val="Sí">Sí</span>
+            <span class="pill active" data-group="usa_legal" data-val="No">No</span>
+            <span class="pill" data-group="usa_legal" data-val="En proceso">En proceso</span>
+          </div>
+          <input type="hidden" name="usa_legal" value="No" />
+        </div>
+        <div class="field">
+          <label>¿Tienen cuenta de TikTok Shop?</label>
+          <div class="pill-group" id="pg_tt_shop">
+            <span class="pill" data-group="tt_shop" data-val="Sí, activa">Sí, activa</span>
+            <span class="pill active" data-group="tt_shop" data-val="No">No</span>
+            <span class="pill" data-group="tt_shop" data-val="Solo personal">Solo personal</span>
+          </div>
+          <input type="hidden" name="tt_shop" value="No" />
+        </div>
+        <div class="field">
+          <label>¿Tienen tienda en Shopify?</label>
+          <div class="pill-group" id="pg_shopify">
+            <span class="pill" data-group="shopify" data-val="Sí">Sí</span>
+            <span class="pill active" data-group="shopify" data-val="No">No</span>
+            <span class="pill" data-group="shopify" data-val="Quiero crear una">Quiero crear una</span>
+          </div>
+          <input type="hidden" name="shopify" value="No" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Precio de venta al público en USA (USD)</label>
+          <input type="text" name="guantes_precio_usa" placeholder="Ej: USD $15 / par" />
+        </div>
+        <div class="field">
+          <label>¿Logística (envíos) la maneja Laura desde USA?</label>
+          <div class="pill-group" id="pg_logistica_usa">
+            <span class="pill active" data-group="logistica_usa" data-val="Sí, Laura en USA">Sí, Laura en USA</span>
+            <span class="pill" data-group="logistica_usa" data-val="A definir">A definir</span>
+            <span class="pill" data-group="logistica_usa" data-val="Otro esquema">Otro esquema</span>
+          </div>
+          <input type="hidden" name="logistica_usa" value="Sí, Laura en USA" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Otros productos o servicios a comercializar</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay otros productos o servicios que quieran lanzar digitalmente?</label>
+          <textarea name="otros_productos" placeholder="Ej: tour packages, servicio de transporte desde el hotel, merchandising, catering para eventos..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-next" onclick="goNext()">Continuar →</button>
+    </div>
+  </section>
+
+  <!-- SECTION 8: Escalabilidad -->
+  <section class="form-section" id="sec-7" data-title="Escalabilidad">
+    <div class="section-head">
+      <div class="section-eyebrow">Sección 8 de 8</div>
+      <h2 class="section-title">Escalabilidad y visión a futuro</h2>
+      <p class="section-desc">Queremos diseñar la solución pensando en cómo crecerá tu cadena hotelera, no solo en el día de hoy.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Expansión de propiedades</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay otros hoteles o propiedades que podrían sumarse al proyecto en el futuro?</label>
+          <textarea name="expansion_propiedades" placeholder="Ej: Hotel 12 Night (Medellín, de Anthony), Love 32 (Medellín), posible propiedad en USA con Laura..."></textarea>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>N.º de propiedades adicionales previstas en 12 meses</label>
+          <input type="number" name="propiedades_futuras" placeholder="Ej: 3" min="0" />
+        </div>
+        <div class="field">
+          <label>¿El socio Anthony ya está confirmado para sumarse?</label>
+          <div class="pill-group" id="pg_anthony">
+            <span class="pill" data-group="anthony" data-val="Sí, confirmado">Sí, confirmado</span>
+            <span class="pill active" data-group="anthony" data-val="Interesado — pendiente de confirmar">Interesado</span>
+            <span class="pill" data-group="anthony" data-val="No por ahora">No por ahora</span>
+          </div>
+          <input type="hidden" name="anthony" value="Interesado — pendiente de confirmar" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Presupuesto y expectativas</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Rango de inversión mensual disponible (mantenimiento + operación del agente)</label>
+          <div class="pill-group" id="pg_budget_mes">
+            <span class="pill" data-group="budget_mes" data-val="Menos de $200k COP">Menos de $200k COP</span>
+            <span class="pill active" data-group="budget_mes" data-val="$200k–$400k COP">$200k–$400k COP</span>
+            <span class="pill" data-group="budget_mes" data-val="$400k–$700k COP">$400k–$700k COP</span>
+            <span class="pill" data-group="budget_mes" data-val="Más de $700k COP">+ $700k COP</span>
+          </div>
+          <input type="hidden" name="budget_mes" value="$200k–$400k COP" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Tienen presupuesto de desarrollo (setup inicial) definido?</label>
+          <div class="pill-group" id="pg_budget_dev">
+            <span class="pill" data-group="budget_dev" data-val="Sí, definido">Sí, definido</span>
+            <span class="pill active" data-group="budget_dev" data-val="Aproximado">Aproximado</span>
+            <span class="pill" data-group="budget_dev" data-val="Sin definir aún">Sin definir aún</span>
+          </div>
+          <input type="hidden" name="budget_dev" value="Aproximado" />
+        </div>
+        <div class="field">
+          <label>Monto aproximado de presupuesto de desarrollo (COP)</label>
+          <input type="text" name="budget_dev_monto" placeholder="Ej: $6.000.000 COP" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Qué ROI esperan ver en los primeros 3 meses?</label>
+          <textarea name="roi_esperado" placeholder="Ej: 2 reservas directas más por semana, cero tiempo respondiendo WhatsApp fuera de horario, Kennedy subir de 7.6 a 8.5 en Booking..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Cronograma deseado</div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Cuándo quieren el agente funcionando en Kennedy (Bogotá)?</label>
+          <div class="pill-group" id="pg_tiempo_kennedy">
+            <span class="pill active" data-group="tiempo_kennedy" data-val="2–3 semanas">2–3 semanas</span>
+            <span class="pill" data-group="tiempo_kennedy" data-val="1 mes">1 mes</span>
+            <span class="pill" data-group="tiempo_kennedy" data-val="2 meses">2 meses</span>
+            <span class="pill" data-group="tiempo_kennedy" data-val="Sin urgencia definida">Sin urgencia</span>
+          </div>
+          <input type="hidden" name="tiempo_kennedy" value="2–3 semanas" />
+        </div>
+        <div class="field">
+          <label>¿Cuándo para Medellín (Eco 44)?</label>
+          <div class="pill-group" id="pg_tiempo_medellin">
+            <span class="pill" data-group="tiempo_medellin" data-val="Simultáneo a Kennedy">Simultáneo</span>
+            <span class="pill active" data-group="tiempo_medellin" data-val="Fase 2 — después de Kennedy">Fase 2</span>
+            <span class="pill" data-group="tiempo_medellin" data-val="A definir">A definir</span>
+          </div>
+          <input type="hidden" name="tiempo_medellin" value="Fase 2 — después de Kennedy" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay alguna fecha crítica de negocio que debamos considerar?</label>
+          <input type="text" name="fechas_criticas" placeholder="Ej: semana santa, diciembre, feria de flores en Medellín, lanzamiento de guantes..." />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Información adicional</div>
+      <div class="grid-1">
+        <div class="field">
+          <label>¿Hay algo más que quieras compartir con el equipo antes de la propuesta?</label>
+          <textarea name="info_adicional" style="min-height:110px" placeholder="Ej: inquietudes legales (Habeas Data), accesos a sistemas, el hotel Carvajal opera solo adultos (configuración crítica del agente), restricciones de contenido, otros socios..."></textarea>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Cómo conociste a Dataverse Solutions?</label>
+          <div class="pill-group" id="pg_canal_conocimiento">
+            <span class="pill" data-group="canal_conocimiento" data-val="Referido">Referido</span>
+            <span class="pill" data-group="canal_conocimiento" data-val="Redes sociales">Redes sociales</span>
+            <span class="pill" data-group="canal_conocimiento" data-val="Búsqueda en Google">Google</span>
+            <span class="pill" data-group="canal_conocimiento" data-val="Evento o networking">Evento</span>
+            <span class="pill" data-group="canal_conocimiento" data-val="Otro">Otro</span>
+          </div>
+          <input type="hidden" name="canal_conocimiento" value="" />
+        </div>
+        <div class="field">
+          <label>Si fue referido, ¿quién nos recomendó?</label>
+          <input type="text" name="referido_nombre" placeholder="Nombre de la persona" />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="font-size:12px; color:var(--muted); line-height:1.7;">
+        Al enviar este formulario, autorizo a Dataverse Solutions a usar la información proporcionada exclusivamente para la preparación de la propuesta comercial y el desarrollo del proyecto. La información es tratada con absoluta confidencialidad y no será compartida con terceros.
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn-back" onclick="goPrev()">← Atrás</button>
+      <button class="btn-submit" id="submitBtn" onclick="submitForm()">Enviar formulario</button>
+    </div>
+    <div class="error-msg" id="errorMsg">Hubo un error al enviar el formulario. Por favor intenta de nuevo o escríbenos directamente a solutions@dataversesolutions.net</div>
+  </section>
+
+  <!-- SUCCESS SCREEN -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
+    <h2 class="success-title">¡Formulario enviado!</h2>
+    <p class="success-sub">
+      El equipo de Dataverse Solutions revisará toda tu información y se pondrá en contacto contigo en menos de 24 horas para confirmar los próximos pasos y preparar tu propuesta comercial personalizada.
+    </p>
+    <div class="success-badge">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Respuesta enviada a solutions@dataversesolutions.net
+    </div>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<footer class="page-footer">
+  <div style="max-width:780px; margin:0 auto; padding:0 20px;">
+    <strong style="color:var(--muted)">Dataverse Solutions</strong> · Barcelona, España · dataversesolutions.net<br/>
+    Formulario de onboarding hotelero — Uso confidencial
+  </div>
+</footer>
+
+<script>
+  /* ════════════════════════════════════════════════
+     CONFIGURACIÓN — reemplaza con tu ID de Formspree
+     Crea tu cuenta en: https://formspree.io
+  ════════════════════════════════════════════════ */
+  const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // ← Reemplazar con tu ID real
+
+  /* ════════ State ════════ */
+  let currentSection = 0;
+  const totalSections = 8;
+  const visited = new Set([0]);
+  let hotelIndex = 0;
+
+  const SECTION_LABELS = [
+    'Empresa', 'Propiedades', 'Sistemas',
+    'Canales digitales', 'Operaciones', 'Objetivos',
+    'Productos extra', 'Escalabilidad'
+  ];
+
+  /* ════════ Navigation ════════ */
+  function goNext() {
+    if (currentSection < totalSections - 1) {
+      if (currentSection === 1) serializeHotels();
+      showSection(currentSection + 1);
+    }
+  }
+
+  function goPrev() {
+    if (currentSection > 0) showSection(currentSection - 1);
+  }
+
+  function showSection(idx) {
+    document.querySelectorAll('.form-section').forEach((s, i) => {
+      s.classList.toggle('active', i === idx);
+    });
+    currentSection = idx;
+    visited.add(idx);
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ════════ Progress + Tabs ════════ */
+  function buildTabs() {
+    const container = document.getElementById('sectionTabs');
+    container.innerHTML = SECTION_LABELS.map((label, i) =>
+      `<button class="s-tab${i === 0 ? ' active' : ''}" onclick="jumpTo(${i})" id="tab-${i}">${label}</button>`
+    ).join('');
+  }
+
+  function jumpTo(idx) { showSection(idx); }
+
+  function updateProgress() {
+    const pct = ((currentSection + 1) / totalSections) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = `${currentSection + 1} de ${totalSections}`;
+    document.querySelectorAll('.s-tab').forEach((tab, i) => {
+      tab.classList.remove('active', 'visited');
+      if (i === currentSection) tab.classList.add('active');
+      else if (visited.has(i)) tab.classList.add('visited');
+    });
+  }
+
+  /* ════════ Radio Pills ════════ */
+  document.addEventListener('click', function(e) {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    const group = pill.dataset.group;
+    if (!group) return;
+    const container = pill.closest('.pill-group');
+    if (container) {
+      container.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    }
+    pill.classList.add('active');
+    const hiddenInput = document.querySelector(`input[name="${group}"]`);
+    if (hiddenInput) hiddenInput.value = pill.dataset.val;
+  });
+
+  /* ════════ Hotel Cards ════════ */
+  function addHotel() {
+    const list = document.getElementById('hotelList');
+    const idx = hotelIndex++;
+    const card = document.createElement('div');
+    card.className = 'hotel-card';
+    card.id = 'hotel-' + idx;
+    card.innerHTML = buildHotelCard(idx);
+    list.appendChild(card);
+    // Init pill listeners are handled by event delegation
+  }
+
+  function buildHotelCard(i) {
+    return `
+      <div class="hotel-card-head">
+        <div class="hotel-chip">
+          <div class="hotel-number">${i + 1}</div>
+          <span class="hotel-tag">Propiedad ${i + 1}</span>
+        </div>
+        ${i > 0 ? `<button class="btn-remove" onclick="removeHotel(${i})">Eliminar</button>` : ''}
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Nombre de la propiedad <span class="req">*</span></label>
+          <input type="text" class="h-nombre" placeholder="Ej: Lavid Hotel Kennedy" />
+        </div>
+        <div class="field">
+          <label>Ciudad <span class="req">*</span></label>
+          <input type="text" class="h-ciudad" placeholder="Ej: Bogotá" />
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="field">
+          <label>Clasificación</label>
+          <select class="h-estrellas">
+            <option value="">Seleccionar</option>
+            <option>1 estrella</option><option>2 estrellas</option>
+            <option>3 estrellas</option><option>4 estrellas</option>
+            <option>5 estrellas</option><option>Sin clasificar</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>N.º de habitaciones</label>
+          <input type="number" class="h-habitaciones" placeholder="Ej: 45" />
+        </div>
+        <div class="field">
+          <label>Responsable / Socio</label>
+          <input type="text" class="h-responsable" placeholder="Ej: Nelsy Ruiz" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Tipo de establecimiento</label>
+          <select class="h-tipo">
+            <option value="">Seleccionar</option>
+            <option>Hotel estándar</option><option>Hotel solo adultos</option>
+            <option>Eco-hotel</option><option>Hotel boutique</option>
+            <option>Apartahotel</option><option>Hostal</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estado en el proyecto</label>
+          <select class="h-estado">
+            <option value="">Seleccionar</option>
+            <option>Operando — prioridad Fase 1</option>
+            <option>Operando — Fase 2 o posterior</option>
+            <option>En proceso de apertura</option>
+            <option>Solo para exploración futura</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>¿Restricción de edad?</label>
+          <div class="pill-group">
+            <span class="pill active" data-group="h_age_${i}" data-val="Sin restricción">Sin restricción</span>
+            <span class="pill" data-group="h_age_${i}" data-val="Solo adultos (+18)">Solo adultos</span>
+            <span class="pill" data-group="h_age_${i}" data-val="Todas las edades">Todas las edades</span>
+          </div>
+          <input type="hidden" class="h-restriccion" value="Sin restricción" />
+        </div>
+        <div class="field">
+          <label>¿Tiene aire acondicionado?</label>
+          <div class="pill-group">
+            <span class="pill" data-group="h_ac_${i}" data-val="Sí">Sí</span>
+            <span class="pill active" data-group="h_ac_${i}" data-val="No">No</span>
+            <span class="pill" data-group="h_ac_${i}" data-val="Parcialmente">Parcialmente</span>
+          </div>
+          <input type="hidden" class="h-ac" value="No" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Dirección exacta del hotel</label>
+          <input type="text" class="h-direccion" placeholder="Ej: Cra 80 #38-41, Kennedy, Bogotá" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>URL perfil Booking.com</label>
+          <input type="url" class="h-booking-url" placeholder="https://www.booking.com/hotel/..." />
+        </div>
+        <div class="field">
+          <label>URL Google Business</label>
+          <input type="url" class="h-google-url" placeholder="https://maps.google.com/..." />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Calificación Booking actual (1–10)</label>
+          <input type="number" class="h-rating-booking" step="0.1" min="1" max="10" placeholder="Ej: 7.6" />
+        </div>
+        <div class="field">
+          <label>Calificación Google actual (1–5)</label>
+          <input type="number" class="h-rating-google" step="0.1" min="1" max="5" placeholder="Ej: 4.2" />
+        </div>
+      </div>
+      <div class="grid-1">
+        <div class="field">
+          <label>Observaciones adicionales sobre esta propiedad</label>
+          <textarea class="h-notas" placeholder="Ej: zona motelera — solo adultos (crítico para el agente), perfil de huéspedes, tipo de reservas más frecuentes, problemas conocidos..."></textarea>
+        </div>
+      </div>`;
+  }
+
+  function removeHotel(idx) {
+    const el = document.getElementById('hotel-' + idx);
+    if (el) el.remove();
+  }
+
+  function serializeHotels() {
+    const cards = document.querySelectorAll('.hotel-card');
+    const data = [];
+    cards.forEach(card => {
+      const g = (cls) => (card.querySelector(cls) || {}).value || '';
+      // Get pill values (hidden inputs with class h-restriccion, h-ac)
+      const restriccionInput = card.querySelector('.h-restriccion');
+      const acInput = card.querySelector('.h-ac');
+      data.push({
+        nombre: g('.h-nombre'),
+        ciudad: g('.h-ciudad'),
+        estrellas: g('.h-estrellas'),
+        habitaciones: g('.h-habitaciones'),
+        responsable: g('.h-responsable'),
+        tipo: g('.h-tipo'),
+        estado: g('.h-estado'),
+        restriccion_edad: restriccionInput ? restriccionInput.value : '',
+        aire_acondicionado: acInput ? acInput.value : '',
+        direccion: g('.h-direccion'),
+        booking_url: g('.h-booking-url'),
+        google_url: g('.h-google-url'),
+        rating_booking: g('.h-rating-booking'),
+        rating_google: g('.h-rating-google'),
+        notas: g('.h-notas'),
+      });
+    });
+    document.getElementById('hotelesJson').value = JSON.stringify(data, null, 2);
+  }
+
+  /* ════════ Pill → hidden input sync for hotel cards ════════ */
+  document.addEventListener('click', function(e) {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    const group = pill.dataset.group;
+    if (!group || !group.startsWith('h_')) return;
+    const card = pill.closest('.hotel-card');
+    if (!card) return;
+    // Sync to the corresponding hidden input
+    const pillGroup = pill.closest('.pill-group');
+    if (pillGroup) {
+      pillGroup.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const hiddenClass = group.startsWith('h_age') ? '.h-restriccion' : '.h-ac';
+      const hiddenInput = pillGroup.nextElementSibling;
+      if (hiddenInput) hiddenInput.value = pill.dataset.val;
+    }
+  });
+
+  /* ════════ Form submission ════════ */
+  async function submitForm() {
+    serializeHotels();
+
+    const btn = document.getElementById('submitBtn');
+    const errEl = document.getElementById('errorMsg');
+    errEl.style.display = 'none';
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>Enviando...';
+
+    // Collect all named inputs
+    const allInputs = document.querySelectorAll('[name]');
+    const formData = {};
+    allInputs.forEach(input => {
+      if (input.type === 'checkbox') {
+        if (input.checked) {
+          formData[input.name] = (formData[input.name] ? formData[input.name] + ', ' : '') + input.value;
+        }
+      } else if (input.value !== '') {
+        formData[input.name] = input.value;
+      }
+    });
+
+    // Add metadata
+    formData['_subject'] = '🏨 Nuevo onboarding Lavid Hoteles — ' + (formData['contacto_nombre'] || 'Sin nombre');
+    formData['_replyto'] = formData['contacto_email'] || '';
+
+    // Check if Formspree ID is configured
+    if (FORMSPREE_ID === 'YOUR_FORMSPREE_ID') {
+      // Demo mode — show success without actually sending
+      console.log('Formulario en modo demo. Datos recopilados:', formData);
+      showSuccess();
+      return;
+    }
+
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        showSuccess();
+      } else {
+        throw new Error('Formspree error: ' + res.status);
+      }
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      btn.innerHTML = 'Enviar formulario';
+      errEl.style.display = 'block';
+    }
+  }
+
+  function showSuccess() {
+    document.querySelectorAll('.form-section').forEach(s => { s.style.display = 'none'; });
+    document.getElementById('successScreen').classList.add('show');
+    document.querySelector('.progress-wrap').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ════════ Init ════════ */
+  buildTabs();
+  updateProgress();
+  addHotel(); // Add first hotel card by default
+</script>
+
+</body>
+</html>
